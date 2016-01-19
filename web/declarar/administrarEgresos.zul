@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+<?init class="com.ec.seguridad.Autentificador"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/plantilla/plantilla.zul"?>
+
+<hbox self="@define(content)" apply="org.zkoss.bind.BindComposer" 
+      viewModel="@id('vm') @init('com.ec.controlador.AdministrarFacturaViewModel')" width="100%">
+    <tabbox id="tboxPrincipal"  width="100%">
+        <tabs >
+                
+            <tab label="REGISTRO DE COMPRAS" src="/imagenes/fact.png" sclass="menutabs" /> 
+
+               
+                
+        </tabs>
+        <tabpanels >
+                
+            <tabpanel id="tabUsario" height="98%" width="99%"  >
+                    
+                <grid width="99%">
+                    <columns>                               
+                        <column label="" width="25%" align="left"/>
+                        <column label="" width="25%"/>
+                        <column label="" width="25%" align="left"/>
+                        <column label="" width="25%"/>
+                   
+                    </columns>
+                    <rows>
+                              
+                        <row>
+                            <cell colspan="1" >
+                                <label value="Proveedor:" width="97%" />
+                            </cell>
+                            <cell colspan="1" >
+                                <combobox width="100%" model="@load(vm.listaProveedor)"
+                                          selectedItem="@bind(vm.factura.idProveedor)" readonly="true" >
+                                          
+                                    <template name="model">
+                                        <comboitem  label="@bind(each.provNombre)" 
+                                                    description="@bind(each.provIdentificacion ne null ? 'Identificacion:'.concat(each.provIdentificacion) : ''))"/>
+                                    </template>                                      
+                                </combobox>  
+                            </cell>
+                    
+                            <cell colspan="1" >
+                                <label value="Fecha: " width="97%" />
+                            </cell>
+                            <cell colspan="1" >
+                                <datebox compact="true" value="@bind(vm.factura.facFecha)"  readonly="true"   style="font-weight:bold" buttonVisible="true" lenient="true" mold="rounded" format="dd/MM/yyyy H:mm "  width="60%" constraint="no empty: Ingrese la fecha"/>
+                            </cell>
+                               
+                   
+                        </row>
+                        <row>
+                               
+                               
+                            <cell colspan="1" >
+                                <label value="Número de factura: " width="97%" />
+                            </cell>
+                            <cell colspan="1" >
+                                <textbox value="@bind(vm.factura.facNumero)"
+                                         width="97%" constraint="no empty: Valor requerido"  />
+                                <!--<datebox compact="true" value="@bind(vm.factura.facNumero)"  readonly="true"   style="font-weight:bold" buttonVisible="true" lenient="true" mold="rounded" format="dd/MM/yyyy H:mm "  width="60%" constraint="no empty: Ingrese la fecha"/>-->
+                            </cell>
+                            <cell colspan="1" >
+                                <label value="Subtotal de la factura: " width="97%"  />
+                            </cell>
+                            <cell colspan="1" >
+                                <decimalbox  format="####.##" value="@bind(vm.factura.facSubtotal)" width="96%" 
+                                             onChanging="@command('calcularValores',valor=event.value ne null ? event.value : 0.0 )"  constraint="no empty: Valor requerido" />
+                            </cell>
+                   
+                        </row>
+                        <row>
+                               
+                               
+                            <cell colspan="1" >
+                                <label value="Iva de factura: " width="97%" />
+                            </cell>
+                            <cell colspan="1" >
+                                <decimalbox readonly="true" format="####.##" value="@bind(vm.factura.facIva)"
+                                            width="97%"  />
+                                <!--<datebox compact="true" value="@bind(vm.factura.facNumero)"  readonly="true"   style="font-weight:bold" buttonVisible="true" lenient="true" mold="rounded" format="dd/MM/yyyy H:mm "  width="60%" constraint="no empty: Ingrese la fecha"/>-->
+                            </cell>
+                            <cell colspan="1" >
+                                <label value="Total de la factura: " width="97%" />
+                            </cell>
+                            <cell colspan="1" >
+                                <decimalbox readonly="true" format="####.##" value="@bind(vm.factura.facTotal)" width="96%" />
+                            </cell>
+                   
+                        </row>
+                            
+                        <row>
+                            <cell align="center" colspan="4" >
+                                <button id="btnFactura" sclass="botonGreen"  src="/imagenes/Save.bmp" onClick="@command('guardarFactura')"
+                                        height="30px" />
+                            </cell>
+               
+                   
+                        </row> 
+                        <!--<zk if="${vm.activarDetalle=='activo'}" >-->
+                            <row>
+                         
+                                <cell align="center" colspan="4" >
+                                    <borderlayout  height="350px" width="100%">
+                                      
+                                        <center border="none" autoscroll="true" >
+				
+                                           
+                                            <listbox id="lstRubroFactura" model="@load(vm.lstRubroFactura)"
+                                                     nonselectableTags="*" checkmark="true"  multiple="true" 
+                                                     onSelect="@command('rubrosSeleccionados')"  width="100%">
+                                                <custom-attributes org.zkoss.zul.listbox.rod="true"/>
+                    
+                                                <auxhead>
+                                            
+                                                    <auxheader colspan="5"  >  
+                                                        <combobox  model="@bind(vm.listaRubros)"
+                                                                   selectedItem="@bind(vm.rubro)" readonly="true" >
+                                          
+                                                            <template name="model">
+                                                                <comboitem  label="@bind(each.rubDescripcion)" />
+                                                            </template>                                      
+                                                        </combobox>
+                                                        <label value="Agregar "/>
+                                                        <space bar="false" /> 
+                                                        <button image="/imagenes/add.bmp"  
+                                                                onClick="@command('nuevoRubroFactura')"  tooltiptext="Nuevo registro"/>                                                          
+                                                        <space bar="false" />   
+                                                        <label value="Eliminar "/>
+                                                        <space bar="false" /> 
+                                                        <button image="/imagenes/Delete.png"  
+                                                                onClick="@command('eliminarRubro')"  tooltiptext="Eliminar registro"/>                                                                                                                
+                                                    </auxheader>
+                                                </auxhead>
+                                               
+                                        
+                                                <listhead>
+                                                    <listheader width="10%"  label="CANTIDAD " align="left" />
+                                                    <listheader width="20%"  label="DESCRIPCION" align="left"  /> 
+                                                    <listheader width="20%"  label="RUBRO" align="left"  /> 
+                                                    <listheader width="20%"  label="SUBTOTAL" align="left" />
+                                                    <listheader width="15%"  label="IVA" align="left" /> 
+                                                    <listheader width="15%"  label="VALOR TOTAL" align="left" />
+                                                                                                                            
+                                                </listhead>
+                    
+                                                <template name="model">                                                            
+                                                    <listitem>
+                                                        <listcell>
+                                                            <spinner format="###.##" value="@bind(each.rfCantidad)" width="60%" constraint="no empty: Campo reuqerido" />
+                                                        </listcell>
+                                                        <listcell>
+                                                            <textbox  value="@bind(each.rfDescripcion)" width="99%" constraint="no empty: Campo reuqerido" />
+                                                        </listcell>
+                                                        <listcell>
+
+                                                            <textbox readonly="true"   value="@bind(each.rubros.rubDescripcion)" width="99%"  />
+                                                        </listcell>
+                                                        <listcell>
+                                                            <decimalbox format="###.#####" value="@bind(each.rfSubtotal)"  width="99%" constraint="no empty: Campo reuqerido" />
+                                                        </listcell>
+                                                        <listcell>
+                                                            <decimalbox format="###.#####" value="@bind(each.rfIva)"  width="99%" constraint="no empty: Campo reuqerido" />
+                                                        </listcell>
+                                                        <listcell>
+                                                            <decimalbox format="###.#####" value="@bind(each.rfTotal)"  width="99%" constraint="no empty: Campo reuqerido" />
+                                                        </listcell>
+                                                    </listitem>
+                                                </template>
+
+                                            </listbox>
+                                                       
+                                   
+                                        </center>
+                                       
+                                    </borderlayout>
+                                
+                                </cell>
+               
+                   
+                            </row>  
+                            <row>
+                                <cell align="center" colspan="4" >
+                                    <button id="btnRubroFactura" sclass="botonGreen"  src="/imagenes/Save.bmp" onClick="@command('guardarRubroFactura')"
+                                            height="30px" />
+                                </cell>
+               
+                   
+                            </row> 
+                        <!--</zk>-->
+                
+                    </rows>  
+              
+                </grid> 
+            </tabpanel>
+                
+             
+            
+        </tabpanels>
+            
+    </tabbox>
+</hbox>
+

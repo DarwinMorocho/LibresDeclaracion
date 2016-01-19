@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<window id="wProveedor"   position="center" width="400px" closable="true"  
+        apply="org.zkoss.bind.BindComposer" contentStyle="overflow:auto"
+        viewModel="@id('vm') @init('com.ec.controlador.ProveedorViewModel')">
+    <caption label="Proveedor" style="font-weight:bold"
+    /> 
+    <grid>
+        <columns>                               
+            <column label="Etiquetas" width="50%" align="left"/>
+            <column label="Descripcion" width="50%"/>
+                   
+        </columns>
+        <rows>
+            
+            <row>
+                <label value="Identificación" />
+             
+                <textbox value="@bind(vm.proveedor.provIdentificacion)"
+                     constraint="no empty: Campo reuqerido"  maxlength="10"  width="97%" tabindex="1" />
+                
+                    
+            </row>
+            <row>
+                <cell colspan="1">
+                    <label value="Nombre del Proveedor"  />
+                </cell>
+                <cell colspan="1">
+                    <textbox value="@bind(vm.proveedor.provNombre)"
+                             width="97%" tabindex="1"  constraint="no empty: Campo reuqerido" />
+                </cell>
+                    
+            </row>
+                
+            <row>
+                <cell colspan="1">
+                    <label value="Dirección"  />
+                </cell>
+                <cell colspan="1">
+                    <textbox value="@bind(vm.proveedor.provDireccion)"
+                             width="97%" tabindex="1"  constraint="no empty: Campo reuqerido" />
+                </cell>
+                   
+            </row>
+                
+            <row>
+                <cell colspan="1">
+                    <label value="Teléfono"  />
+                </cell>
+                <cell colspan="1">
+                    <textbox value="@bind(vm.proveedor.provTelefono)"
+                             width="97%" tabindex="1"  constraint="no empty: Campo reuqerido" />
+                </cell>
+                   
+            </row>
+                
+            <row>
+                <cell align="center" colspan="2">
+                    <hbox>
+                        <button sclass="botonGreen"   src="/imagenes/Save.bmp" onClick="@command('guardarProveedor')"
+                                height="30px" />
+                    </hbox>
+                
+                </cell> 
+            </row>         
+        </rows>  
+               
+    </grid> 
+                   
+                   
+                    
+   
+                      
+        
+</window>

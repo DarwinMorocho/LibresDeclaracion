@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+<?init class="com.ec.seguridad.Autentificador"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/plantilla/plantilla.zul"?>
+<zk  contentStyle="overflow:auto" with="100%" >
+    <hbox self="@define(content)" apply="org.zkoss.bind.BindComposer" 
+          viewModel="@id('vm') @init('com.ec.controlador.AdministrarReportesViewModel')" width="100%">
+        <tabbox id="tboxPrincipal"  width="99%">
+            <tabs >
+                <tab label="ESTADISTICAS DE RUBROS" src="/imagenes/Pie chart.png" sclass="menutabs" /> 
+                 <tab label="ESTADISTICA DE GASTOS TOTALES" src="/imagenes/Report.png" sclass="menutabs" /> 
+                <tab label="DOCUMENTOS" src="/imagenes/Calculator.bmp" sclass="menutabs" /> 
+
+            </tabs>
+            <tabpanels >
+                
+                <tabpanel id="tabEstGastos" height="98%" width="99%"  >                    
+                    <grid width="100%" >
+                        <auxhead>
+                            <auxheader colspan="1" class="topic">Estadisticas por rubro</auxheader>
+                        </auxhead>
+                        <auxhead>
+                            <auxheader colspan="1" class="topic">
+                                <!-- DESDE: <datebox compact="true" value="@bind(vm.fechaInicioRubro)"  readonly="true"   style="font-weight:bold" buttonVisible="true" lenient="true" mold="rounded" format="dd/MM/yyyy H:mm "   constraint="no empty: Fecha de inicio"/>
+                                HASTA:<datebox compact="true" value="@bind(vm.fechaFinRubro)"  readonly="true"   style="font-weight:bold" buttonVisible="true" lenient="true" mold="rounded" format="dd/MM/yyyy H:mm "   constraint="no empty: Fecha de fin"/>-->
+                                BUSCAR INFORMACION:
+                                <space bar="false"  width="20px" />
+                                <button sclass="botonGreen"  image="/imagenes/Find.png"  onClick="@command('graficarForRubro')"  tooltiptext="Graficar por areas"/>
+                                <space bar="false"  width="20px" />
+                                <!--<button id="btnDesGenero" label="DESCARGAR"  sclass="botonGreen"  onClick="@command('descargarGenero')"  tooltiptext="Descargar grafica"/>-->
+                            </auxheader>
+                        </auxhead>
+                        <columns>                               
+                            <column label="" align="center"/>
+                                       
+                        </columns>
+                     
+                        <rows >
+                            <row>
+                                <charts id="chartRubro" type="bar"  title="Estadísticas de rubros"/>
+                                <!--<image content="@bind(vm.reporteGenero)" align="center"  style="margin: 2% 0 0 10%;"   />-->
+                            </row>
+          
+                        
+                        </rows>
+                  
+                    </grid> 
+                   
+                    
+                </tabpanel>
+                  
+                <tabpanel id="tabRubroGastos" height="98%" width="99%"  >
+                    
+                    <grid width="100%" >
+                        <auxhead>
+                            <auxheader colspan="1" class="topic">Estadisticas de gastos totales</auxheader>
+                        </auxhead>
+                        <auxhead>
+                            <auxheader colspan="1" class="topic">
+                                DESDE: <datebox compact="true" value="@bind(vm.fechaInicioRubroGastos)"  readonly="true"   style="font-weight:bold" buttonVisible="true" lenient="true" mold="rounded" format="dd/MM/yyyy H:mm "   constraint="no empty: Fecha de inicio"/>
+                                HASTA:<datebox compact="true" value="@bind(vm.fechaFinRubroGastos)"  readonly="true"   style="font-weight:bold" buttonVisible="true" lenient="true" mold="rounded" format="dd/MM/yyyy H:mm "   constraint="no empty: Fecha de fin"/>
+                                <button sclass="botonGreen"  image="/imagenes/Find.png"  onClick="@command('graficarGastos')"  tooltiptext="Total de gastos"/>
+                            </auxheader>
+                        </auxhead>
+                        <columns>                               
+                            <column label="" align="center"/>
+                                       
+                        </columns>
+                     
+                        <rows >
+                            <row>
+                                <charts id="chartFacturaGastos" type="bar"  title="Estadísticas de gastos totales"/>
+                                <!--<image content="@bind(vm.reporteGenero)" align="center"  style="margin: 2% 0 0 10%;"   />-->
+                            </row>
+          
+                        
+                        </rows>
+                  
+                    </grid> 
+                </tabpanel>
+       
+              
+                <tabpanel id="tabRubro" height="98%" width="99%"  >
+                           
+                    <listbox id="lstRegistros"  model="@load(vm.lstRubroFacturas)" 
+                             nonselectableTags="*"  mold="paging" pageSize="25"  >
+                        <custom-attributes org.zkoss.zul.listbox.rod="true"/>
+                    
+                        <auxhead>
+                            <auxheader colspan="9" >  
+                                DESDE: <datebox compact="true" value="@bind(vm.fechaInicio)"  readonly="true"   style="font-weight:bold" buttonVisible="true" lenient="true" mold="rounded" format="dd/MM/yyyy H:mm "   constraint="no empty: Fecha de inicio"/>
+                                HASTA:<datebox compact="true" value="@bind(vm.fechaFin)"  readonly="true"   style="font-weight:bold" buttonVisible="true" lenient="true" mold="rounded" format="dd/MM/yyyy H:mm "   constraint="no empty: Fecha de fin"/>
+                                <button sclass="botonGreen"  image="/imagenes/Find.png"  onClick="@command('buscarRubroFacturas')"  tooltiptext="Graficar por areas"/>
+                                <space bar="false"  width="20px" />
+                                <button sclass="botonGreen"   src="/imagenes/Download.bmp" onClick="@command('generateXml')"
+                                        height="30px" />
+                               
+                            </auxheader>
+                        </auxhead>
+                    
+                        <listhead>     
+                            <listheader width="10%"  label="N° FACTURA" /> 
+                            <listheader width="30%"  label="RUBRO" /> 
+                            <listheader width="30%"  label="DESCRIPCION" /> 
+                            <listheader width="10%"  label="SUBTOTAL" />  
+                            <listheader width="10%"  label="IVA" />                           
+                            <listheader width="10%"  label="VALOR TOTAL"  /> 
+                            
+                        </listhead>  
+                    
+                        <template name="model">                                                            
+                            <listitem>
+                                <listcell>    
+                                    <label value="@bind(each.factura.facNumero)" width="96%" /> 
+                                </listcell>
+                                <listcell>
+                                    <label value="@bind(each.rubros.rubDescripcion)" width="96%" />
+                                </listcell>
+                                <listcell>
+                                    <label value="@bind(each.rfDescripcion)" width="96%" />
+                                </listcell>
+                                <listcell>
+                                    <label value="@bind(each.rfSubtotal)" width="96%" />
+                                </listcell>
+                                <listcell>
+                                    <label value="@bind(each.rfIva)" width="96%" />
+                                </listcell>
+                                <listcell>
+                                    <label value="@bind(each.rfTotal)" width="96%" />
+                                </listcell>
+                            </listitem>
+                        </template>
+                    </listbox>
+                    
+                   
+                    
+                </tabpanel>
+       
+                
+                   
+            
+            </tabpanels>
+            
+        </tabbox>
+    </hbox>
+
+
+</zk>

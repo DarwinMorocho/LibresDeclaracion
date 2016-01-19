@@ -1,0 +1,35 @@
+<?init class="com.ec.seguridad.Autentificador"?>
+<zk>
+
+
+    <grid hflex="1" vflex="1" viewModel="@id('vm')" id="gridMenu" apply="com.ec.controlador.MenuOpcionesViewModel">
+    
+        <columns>
+            <column width="220px" />
+        </columns>
+        <rows >
+            <row sclass="sidebar-fn">      
+                <hlayout spacing="10px" style="border:2px;padding-top:10px;padding-left:5px;" width="90%">
+                    <image src="/imgmenu/Home.png" height="15%" width="100%" id="btnPrincipal" />
+                </hlayout>
+            </row>
+            
+            <row>
+                <button id="btnAdministrar" label="Registro"  image="/imgmenu/Add.png" sclass="botonMenuLateral" />          
+            </row>
+          
+            <row>
+                <button id="btnFactEgresos" label="Egresos"  image="/imgmenu/Folder.png" sclass="botonMenuLateral" />          
+            </row>
+            <row>
+                <button id="btnFactReportes" label="Reportes"  image="/imgmenu/Stats.png" sclass="botonMenuLateral" />          
+            </row>
+            <row>
+                <button id="btnSeguridad" label="Administración"  image="/imgmenu/User.png" sclass="botonMenuLateral" />          
+            </row>
+           
+        
+        </rows>
+    </grid>
+
+</zk>

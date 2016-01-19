@@ -1,0 +1,13 @@
+<zk>
+    <borderlayout width="99%" >
+        <north  height="10%" border="none" >
+            <include src="/plantilla/banner.zul"/>
+        </north>
+        <west width="18%" border="none" collapsible="true" splittable="true" minsize="300" >
+             <include src="/plantilla/menuOpciones.zul"/>
+        </west>
+        <center  id="mainContentAsesor" autoscroll="true" self="@{insert(content)}">
+            
+        </center>
+    </borderlayout>
+</zk>

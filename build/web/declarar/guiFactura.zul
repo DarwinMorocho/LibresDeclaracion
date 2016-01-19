@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="wFactura"   position="center" width="600px" closable="true"  
+        apply="org.zkoss.bind.BindComposer" contentStyle="overflow:auto"
+        viewModel="@id('vm') @init('com.ec.controlador.FacturaViewModel')">
+    <caption label="Factura" style="font-weight:bold"
+    /> 
+	
+    <grid>
+        <columns>
+            <column label="INGRESE LOS DATOS DE LA FACTURA" width="250px" />
+                
+        </columns>
+        <rows>
+            <row>
+                <label value="Proveedor" width="150px" />
+                <hlayout>
+                    <combobox width="100%" model="@load(vm.listaProveedor)"
+                              selectedItem="@bind(vm.factura.idProveedor)" readonly="true" >
+                        <template name="model">
+                            <comboitem  label="@bind(each.provNombre)"/>
+                        </template>                                      
+                    </combobox>  
+                </hlayout>
+                    
+            </row>
+            <row>
+                <label value="Número de Factura" width="150px" />
+                <hlayout>
+                    <textbox value="@bind(vm.factura.facNumero)"
+                            width="100%" constraint="no empty: Ingrese un numero de factura" />
+                </hlayout>
+                    
+            </row>
+                
+            <row>
+                <label value=" Fecha" width="150px" />
+                <hlayout>
+                     <datebox compact="true" value="@bind(vm.factura.facFecha)"
+                             readonly="true"   style="font-weight:bold" buttonVisible="true" 
+                             lenient="true" mold="rounded" format="dd/MM/yyyy H:mm "  
+                             width="100%" constraint="no empty: Seleccione la fecha" />
+                </hlayout>
+                   
+            </row>
+                
+            <row>
+                <label value="Subtotal" width="150px" />
+                <hlayout>
+                    <decimalbox format="###.#####" value="@bind(vm.factura.facSubtotal)"
+                             width="150px" tabindex="1" />
+                </hlayout>
+                   
+            </row>
+                
+            <row>
+                <label value="IVA" width="150px" />
+                <hlayout>
+                    <decimalbox format="###.#####" value="@bind(vm.factura.facIva)"
+                             width="150px" tabindex="1" constraint="no empty: Campo reuqerido" />
+                </hlayout>
+                   
+            </row>
+                
+            <row>
+                <label value="Total" width="150px" />
+                <hlayout>
+                    <decimalbox format="###.#####" value="@bind(vm.factura.facTotal)"
+                             width="150px" tabindex="1" constraint="no empty: Campo reuqerido" />
+                </hlayout>
+                   
+            </row>
+            <row>
+                <cell align="center" colspan="2" >
+                    <button sclass="botonGreen"   src="/imagenes/Save.bmp" onClick="@command('registrarFactura')"
+                             height="30px" />
+                </cell>
+               
+                   
+            </row> 
+                
+        </rows>  
+               
+    </grid>  
+                   
+                
+        
+</window>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="wRubroE"   position="center" width="500px" closable="true"  
+        apply="org.zkoss.bind.BindComposer" contentStyle="overflow:auto"
+        viewModel="@id('vm') @init('com.ec.controlador.RubroViewModel')">
+    <caption label="Rubros" style="font-weight:bold"
+    /> 
+	
+    <grid>
+        <columns>                               
+            <column label="Etiquetas" width="50%" align="left"/>
+            <column label="Descripcion" width="50%"/>
+                   
+        </columns>
+        <rows>
+            <row>
+                <cell colspan="1" >
+                    <label value="Decripcion" width="97%" />
+                </cell>
+                <cell colspan="1" >
+                      <textbox value="@bind(vm.rubros.rubDescripcion)" width="96%"  constraint="no empty: Campo reuqerido" />
+<!--                    <textbox value="@bind(vm.rubros.rubDescripcion)"
+                             width="97%"  />-->
+                </cell>
+                    
+            </row>
+            <row>
+                <cell colspan="1" >
+                    <label value="Valor" width="97%" />
+                </cell>
+                <cell colspan="1" >
+                    <textbox value="@bind(vm.rubros.rubCosto)"
+                             width="97%"  constraint="no empty: Campo reuqerido" />
+                </cell>
+                   
+            </row>
+            <row>
+                <cell align="center" colspan="2" >
+                    <button sclass="botonGreen"  src="/imagenes/Save.bmp" onClick="@command('guardarRubro')"
+                            height="30px" />
+                </cell>
+               
+                   
+            </row>  
+                
+        </rows>  
+               
+    </grid> 
+                   
+                   
+                  
+        
+</window>
+

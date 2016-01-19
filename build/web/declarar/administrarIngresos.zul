@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+<?init class="com.ec.seguridad.Autentificador"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/plantilla/plantilla.zul"?>
+<zk  contentStyle="overflow:auto" with="100%" >
+    <hbox self="@define(content)" apply="org.zkoss.bind.BindComposer" 
+          viewModel="@id('vm') @init('com.ec.controlador.AdministrarViewModel')" width="100%">
+        <tabbox id="tboxPrincipal"  width="99%">
+            <tabs >
+                
+                <tab label="USUARIO" src="/imagenes/usuario.bmp" sclass="menutabs" /> 
+
+               
+                
+            </tabs>
+            <tabpanels >
+                
+                <tabpanel id="tabUsario" height="98%" width="99%"  >
+                    
+                    <listbox id="lstUsuario"  model="@load(vm.listaUsuario)" 
+                             nonselectableTags="*"  mold="paging" pageSize="25"  >
+                        <custom-attributes org.zkoss.zul.listbox.rod="true"/>
+                    
+                        <auxhead>
+                            <auxheader colspan="9" >  
+                                <button sclass="botonGreen"   src="/imagenes/add.bmp" onClick="@command('nuevoUsuario')"
+                                        height="30px" />
+                               
+                            </auxheader>
+                        </auxhead>
+                    
+                        <listhead>     
+                            <listheader width="30%"  label="NOMBRE PARA EL SISTEMA" /> 
+                            <listheader width="30%"  label="NOMBRE DE LOGIN" /> 
+                            <listheader width="30%"  label="SONTRASEÑA" />  
+                            <listheader width="10%"  label="OPCIONES"  /> 
+                            
+                        </listhead>  
+                    
+                        <template name="model">                                                            
+                            <listitem>
+                                <listcell>    
+                                    <label value="@bind(each.usuNombre)" width="96%" /> 
+                                </listcell>
+                                <listcell>
+                                    <label value="@bind(each.usuLogin)" width="96%" />
+                                </listcell>
+                                <listcell>
+                                    <label value="@bind(each.usuContrasena)" width="96%" />
+                                </listcell>
+                                <listcell>    
+                                    
+                                </listcell>
+                            </listitem>
+                        </template>
+                    </listbox>
+                    
+                </tabpanel>
+                
+             
+            
+            </tabpanels>
+            
+        </tabbox>
+    </hbox>
+
+
+</zk>

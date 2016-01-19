@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="wUsuarioE"   position="center" width="500px" closable="true"  
+        apply="org.zkoss.bind.BindComposer" contentStyle="overflow:auto"
+        viewModel="@id('vm') @init('com.ec.controlador.UsuarioViewModel')">
+    <caption label="Usuario" style="font-weight:bold"
+    /> 
+	
+    <grid>
+        <columns>                               
+            <column label="Etiquetas" width="50%" align="left"/>
+            <column label="Descripcion" width="50%"/>
+                   
+        </columns>
+        <rows>
+             <row>
+                <cell colspan="1" >
+                    <label value="Cedula" width="97%" />
+                </cell>
+                <cell colspan="1" >
+                    <textbox value="@bind(vm.usuario.usuCedula)"
+                             width="97%"  />
+                </cell>
+                   
+            </row>
+            <row>
+                <cell colspan="1" >
+                    <label value="Nombre" width="97%" />
+                </cell>
+                <cell colspan="1" >
+                    <textbox value="@bind(vm.usuario.usuNombre)"
+                             width="97%" constraint="no empty: Campo reuqerido"  />
+                </cell>
+                    
+            </row>
+            <row>
+                <cell colspan="1" >
+                    <label value="Login" width="97%" />
+                </cell>
+                <cell colspan="1" >
+                    <textbox value="@bind(vm.usuario.usuLogin)"
+                             width="97%" constraint="no empty: Campo reuqerido" />
+                </cell>
+                   
+            </row>
+            <row>
+                <cell colspan="1" >
+                    <label value="Contraseña" width="97%" />
+                </cell>
+                <cell colspan="1" >
+                    <textbox value="@bind(vm.usuario.usuContrasena)"
+                             width="97%" constraint="no empty: Campo reuqerido" />
+                </cell>
+                   
+            </row>
+
+            <row>
+                <cell colspan="1">
+                    <label value="Tipo de usuario "/>
+                </cell>
+                <cell colspan="1">
+                    <radiogroup Id="tipoUsuario" selectedItem="@bind(vm.usuario.usuTipo)"   >
+                        <radio  label="Usuario" value="usuario"/>
+                        <space bar="false" width="10%" /> 
+                        <radio  label="Administrador" value="administrador"/>  
+                                               
+                    </radiogroup>
+                </cell>
+            
+                   
+            </row>
+            <row>
+                <cell align="center" colspan="2" >
+                    <button sclass="botonGreen"  src="/imagenes/Save.bmp" onClick="@command('registrarUsuario')"
+                            height="30px" />
+                </cell>
+               
+                   
+            </row>  
+                
+        </rows>  
+               
+    </grid> 
+                   
+                   
+                  
+        
+</window>
+

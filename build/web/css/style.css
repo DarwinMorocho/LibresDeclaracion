@@ -1,0 +1,351 @@
+*{
+    font-style: normal;
+    padding: 0px;
+    margin: 0px;
+
+}
+
+.banner {
+    background-color:#486a9a;
+    color: white;
+    padding: 5px 10px;
+}
+.banner-head{
+    color: white;
+    font-size: 1.8em;
+}
+.banner .logout{
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0px 0px ;
+
+} 
+.banner .texto{
+    color: black;
+    /*    text-decoration: underline;*/
+    cursor: pointer;
+}
+
+.footer {
+    background-color:#00a3e9;
+    color: white;
+    padding-top: 5px;
+}
+
+.footer a,.footer a:VISITED {
+    color: white;	
+}
+
+.sidebar a,.sidebar a:VISITED {
+    color: black;
+    text-decoration: none;
+}
+
+.sidebar-fn{
+    cursor: pointer;
+}
+
+
+.head1{
+    font-size: large;
+}
+.head2{
+    font-size: medium;
+}
+
+.row-title .z-label{
+    font-weight: bold;
+    color:#636363;
+}
+
+.fn-caption .z-caption-l{
+    font-weight: bold;
+    font-size: medium;
+    color: #636363;
+}
+
+.labelTitulo {
+    font_weight: bold;
+    font-family: sans-serif;
+    font-size: 16px;
+    color: black;
+}
+.labelTituloCentral{
+    font_weight: bold;
+    font-family: sans-serif;
+    font-size: 24px;
+    color: black;
+}
+
+.complete-todo .z-label{
+    text-decoration: line-through;
+}
+
+.warn{
+    color:red;
+}
+
+.demo-main a,.demo-main a:VISITED{
+    color:#636363;
+    text-decoration: underline;
+    font-size: smaller;	
+}
+
+.todo-box {
+    padding-right:4px;
+}
+.button{
+    label: center;
+    width: 100%;
+    height: 60px;
+    font-size: 40px;
+    hflex: "1";
+}
+
+.textBoxDisplay{
+    width:100%;
+    readonly: "true";        
+}
+.buttonBusqueda{
+    background-color: firebrick;
+    color:white;
+    font-weight: bold;
+    font-size: 12px;  
+}
+.textBoxRegistrarme{
+    width:430px;
+}
+
+.labelGrupoRegistrame{
+    font-size: 18px;
+    color:#0B56A4;
+}
+
+.textBoxMedio{
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    border-radius: 18px;
+    font: normal 11px/normal "Open Sans", Helvetica, sans-serif;
+
+}
+
+.labelColumnGrid{
+    font-weight: bold;
+
+}
+.menutabs.z-tab .z-tab-text
+{
+    color: #008B8B;
+    cursor: pointer;
+    font-family: arial,sans-serif;
+    font-size: 12px;
+    font-size-adjust: true;
+    /*        font-weight : bold;      */
+    white-space: wrap;
+}
+
+.mainmenu.z-tabbox .z-tab .z-tab-hm 
+{
+    background-image:none;
+    background-color: #ff0000;
+    background-position : center;
+    background-repeat : repeat;
+    height:36px;
+}
+
+.mainmenu.z-tabbox .z-tab .z-tab-hm:hover 
+{
+    background-image:none;
+    background-color: #ff0000;
+    background-position : center;
+    background-repeat : repeat-X;
+    height:36px;
+    padding:none;
+    margin:none;
+}
+
+.mainmenu.z-tabbox .z-tab .z-tab-hl 
+{
+    background-image:none;
+    background-color: #ff0000;
+    background-position : left ;
+    background-repeat : repeat;
+    height:36px;
+}
+
+.mainmenu.z-tabbox .z-tab .z-tab-hl:hover 
+{
+    background-image:none;
+    background-color: #ff0000;
+    background-position : left ;
+    background-repeat : repeat;
+    height:36px;
+    padding:none;
+    margin:none;
+}
+
+
+.mainmenu.z-tabbox .z-tab .z-tab-hr 
+{
+    background-image:none;
+    background-color: #ff0000;
+    background-position : right ;
+    background-repeat : repeat;
+    height:36px;
+}
+
+.mainmenu.z-tabbox .z-tab .z-tab-hr:hover 
+{
+    background-image:none;
+    background-color: #ff0000;
+    background-position : right ;
+    background-repeat : repeat;
+    height:36px;
+}
+
+.z-tabs-header 
+{
+    height: 32px;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    height: 32px;
+}
+
+
+
+.z-toolbar .z-toolbarbutton-cnt 
+{
+    color: #000000;
+    font-family: Tahoma,verdana;
+    font-size: 1em;
+    font-weight: normal;
+    padding: 2px 10px 2px 10px;
+    position: relative;
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #eeeeee;
+    border-top: 1px solid #e0e0e0;
+}
+
+.z-toolbar 
+{
+    background: none;
+    background-color: #cff791;
+    height: 18px;
+}
+
+.z-toolbarbutton-over .z-toolbarbutton-cnt
+{
+    background-image:none;
+    background-color: #cff791;
+
+}
+
+.z-toolbarbutton-select .z-toolbarbutton-cnt
+{
+    background-image:none;
+    background-color: red;
+
+}
+.botonMenuLateral{
+    border: none;
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    border-radius: 18px;
+    -webkit-box-shadow: 0px 0px 0px 0;
+    box-shadow: 0px 0px 0px 0;
+    font: normal 11px/normal "Open Sans", Helvetica, sans-serif;
+    text-transform: uppercase;
+    background: #486a9a;
+    color: #ffffff;
+    padding: 2px 15px 2px 15px;
+    cursor: pointer;
+    font-weight:bold;
+    font-size:11.5px;
+    font-weight:bold; 
+    width:100%;
+    text-align: justify;
+
+}
+
+.botonGreen{
+    border: none;
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    border-radius: 18px;
+    -webkit-box-shadow: 0px 0px 0px 0;
+    box-shadow: 0px 0px 0px 0;
+    font: normal 11px/normal "Open Sans", Helvetica, sans-serif;
+    text-transform: uppercase;
+    background: #486a9a;
+    color: #ffffff;
+    padding: 2px 15px 2px 15px;
+    cursor: pointer;
+    font-weight:bold
+
+}
+
+.labelInformacion{
+    color:#a7a7a7;
+    font-weight:bold;
+
+}
+.gridLogin{
+    background-color: white;
+    margin: 300px 0px 0px 700px;
+    border: 100px red;
+    width:140px;
+    text-align: justify;
+    border: none;
+    -webkit-border-radius: 0 / 9px;
+    border-radius: 0 / 9px;
+    border-color:white white white white;
+
+}
+
+.textLogin{
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    border-radius: 18px;
+    font: normal 11px/normal "Open Sans", Helvetica, sans-serif;
+    width: 10px;
+}
+
+.botonActive{
+    border: none;
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    border-radius: 18px;
+    -webkit-box-shadow: 0px 0px 0px 0;
+    box-shadow: 0px 0px 0px 0;
+    font: normal 11px/normal "Open Sans", Helvetica, sans-serif;
+    text-transform: uppercase;
+    background: #486a9a;
+    color: chartreuse;
+    padding: 2px 15px 2px 15px;
+    cursor: pointer;
+    font-weight:bold
+
+}
+.botonInactive{
+    border: none;
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    border-radius: 18px;
+    -webkit-box-shadow: 0px 0px 0px 0;
+    box-shadow: 0px 0px 0px 0;
+    font: normal 11px/normal "Open Sans", Helvetica, sans-serif;
+    text-transform: uppercase;
+    background: #486a9a;
+    color: red;
+    padding: 2px 15px 2px 15px;
+    cursor: pointer;
+    font-weight:bold
+
+}
+.labelList{
+    color:#509cd3;
+    font-weight:bold
+}
+

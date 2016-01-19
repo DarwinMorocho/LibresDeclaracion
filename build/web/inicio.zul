@@ -1,0 +1,47 @@
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+<?page title="Administrar facturas" contentType="text/html;charset=UTF-8"?>
+<zk contentStyle="overflow:auto">
+    <style>
+        .z-center {
+  
+        background-image: url('./imgprincipal/login.png');
+        background-position: 500px 50px;
+        background-repeat: no-repeat;
+        z-index: 1; 
+        
+        }
+    </style>
+    <window id="loginWin" border="none" style="height:auto"
+            apply="com.ec.controlador.LoginController">
+        <borderlayout height="680px" width="100%">
+
+
+            <center style=" background-color: transparent;" >
+                <div  style=" background-color: transparent; border:none"  >
+                    <vlayout sclass="gridLogin"    >
+                      
+                        <textbox id="account" style="margin: 10px 5px 5px 5px;"  width="90%" sclass="textLogin" value="" constraint="no empty: Ingrese su nombre de usuario."/>						
+                          
+                           
+                        <textbox id="password" value="" style="margin: 15px 5px 5px 5px;" sclass="textLogin" type="password" constraint="no empty: Ingrese una clave." width="90%"/>						
+                        <!--<space bar="false" width="100%"  />--> 
+                        <button label="ENTRAR"   sclass="botonGreen"  width="100%" id="buttonEntrar"/>  
+                          
+                        <label id="message" sclass="warn" value="" />
+                                       
+
+                    </vlayout>
+                </div>
+            
+  
+                        
+                
+            </center>
+            <south>
+                   
+            </south>
+            
+                 
+        </borderlayout>
+    </window>
+</zk>
